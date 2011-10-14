@@ -26,7 +26,7 @@ logical; if \code{TRUE} the observations are also plotted, otherwise only the fi
 logical; if \code{TRUE} vertical lines corresponding to the estimated changepoints are added.
 }
   \item{\dots}{
-additional arguments.. 
+possible additional graphical arguments, such as \code{col}, \code{xlab}, and so on.  
 }
 }
 \details{
@@ -34,7 +34,7 @@ This fuction takes a fitted object returned by \code{jumpoints} and plots
 the resulting fit, namely the estimated step-function and changepoints.
 }
 \value{
-The function simply plots the fit returned by 'jumpoints'
+The function simply plots the fit returned by 'jumpoints'.
 }
 \author{
 Vito Muggeo

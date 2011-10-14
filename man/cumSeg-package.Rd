@@ -14,13 +14,13 @@ Estimation of number and location of change points in `mean-shift'
 \tabular{ll}{
 Package: \tab cumSeg\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
-Date: \tab 2010-08-03\cr
-License: \tab What license is it under?\cr
+Version: \tab 1.1\cr
+Date: \tab 2011-10-14\cr
+License: \tab GPL\cr
 LazyLoad: \tab yes\cr
 }
 Package \code{cumSeg} estimates the number and location of change points in `mean-shift'
-	(also said `piecewise constant' or `step-function') models. These models are particularly useful in biology where 
+	(also said `piecewise constant' or `step-function') models. These models are particularly useful in Biology where 
   it is of interest to know the location of some genomic sequences (e.g. in array comparative genomic hybridization analysis).
   The algorithm works by first estimating an high number of change points (via the efficient `segmented' algorithm of Muggeo (2003)) 
   and then by applying the \emph{lars} algorithm of Efron et al. (2004) to select some of them via a generalized BIC criterion. 
@@ -33,7 +33,7 @@ Vito M.R. Muggeo \email{vito.muggeo@unipa.it}
 }
 \references{
 Muggeo, V.M.R., Adelfio, G., Efficient change point detection for genomic sequences 
-  of continuous measurements, \emph{submitted}.
+  of continuous measurements, \emph{Bioinformatics} \bold{27}, 161-166.
 
 Efron, B., Hastie, T., Johnstone, I., Tibshirani, R. (2004) Least angle regression, 
 \emph{Annals of Statistics} \bold{32}, 407-489.

@@ -36,13 +36,13 @@ numeric vector to indicate the starting values for the changepoints. When \code{
 logical; should the values of the changepoints be rounded?
 }
   \item{control}{
-a list returned by \code{fit.control}
+a list returned by \code{fit.control}.
 }
   \item{selection}{
-a list returned by \code{sel.control}
+a list returned by \code{sel.control}.
 }
   \item{\dots}{
-additional arguments..
+additional arguments.
 }
 }
 \details{
@@ -76,7 +76,7 @@ If \code{output="3"} the most relevant components are those of output 2 but
 
 \references{
 Muggeo, V.M.R., Adelfio, G., Efficient change point detection for genomic sequences 
-  of continuous measurements, \emph{submitted}.
+  of continuous measurements, \emph{Bioinformatics} \bold{27}, 161-166.
 }
 \author{
 Vito Muggeo
