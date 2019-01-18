@@ -18,7 +18,7 @@ jumpoints(y, x, k = min(30, round(length(y)/10)), output = "2",
 the observed (genomic) sequence supposed to have a piecewise constant mean function.
 }
   \item{x}{
-the `segmented' variable, e.g. the genomic location. If missing simple indices 1,2,... are assumed.
+the `segmented' variable, e.g. the genomic location. If missing simple indices 1,2,... n (length of \code{y}) are assumed.
 }
   \item{k}{
 the starting number of changepoints. It should be quite larger than the supposed number of 
@@ -47,8 +47,9 @@ additional arguments.
 }
 \details{
 The algorithm works by suitably transforming the observed responses to fit a continuous piecewise linear model.
-A large number of changepoints is first estimated and afterward the appropriate number of changepoints is 
-selected via a specified criterion (e.g. BIC, MDL, ..). At this aim the lars algorithm is employed. 
+Starting from \code{k} changepoints, a large number of changepoints is first estimated. This number will be (typically slightly) lower than \code{k} since some changepoints will be discarded during the iterative steps when taking non admissible values. If \code{output="1"}, \code{jumpoints} returns them which typically will be more than the actual ones. If \code{output="2"} the appropriate number of changepoints is 
+selected via the criterion specified in argument \code{selection} via \code{\link{sel.control}} (e.g. BIC, MDL, ..). %%At this aim the lars algorithm is employed. 
+Finally if \code{output="3"}, the segmented algorithm is run again to try to improve the changepoint estimates returned by the previous step. 
 }
 \value{
 A list including several components depending on the value of \code{output} \cr

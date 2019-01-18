@@ -40,7 +40,7 @@ logical indicating if the number of changepoints should be computed in the model
 This function specifies how to perform model seletion, namely how many change points should be selected. 
 }
 \value{
-A list with the arguments as components to be used by 'jumpoints' and in turn by 'lars'.
+A list with the arguments as components to be used by \code{jumpoints} and in turn by \code{lars}.
 }
 \author{ Vito Muggeo }
 

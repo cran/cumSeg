@@ -32,8 +32,8 @@ dataset is the normalized average of the log base 2 test over reference ratio.}
 %%  ~~ reference to a publication or URL from which the data were obtained ~~
 %}
 \references{
-SNIJDERS, A. M., NOWAK, N., SEGRAVES, R., BLACKWOOD, S., BROWN, N., CONROY, J., HAMILTON, G.,
-HINDLE, A. K., HUEY, B., KIMURA, K. et al., (2001). Assembly of microarrays for genome-wide measurement
+Snijders, A. M., Nowak, N., Segraves, R., Blackwood, S., Brown, N., Conroy, J., Hamilton, G.,
+Hindle, A. K., Huey, B., Kimura, K. et al., (2001). Assembly of microarrays for genome-wide measurement
 of DNA copy number. Nature Genetics 29, 263-264.
 }
 \examples{

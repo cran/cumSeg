@@ -1,6 +1,6 @@
 plot.aCGHsegmented <-
 function(x, add=FALSE, y=TRUE, psi.lines=TRUE, ...){
-#se y=TRUE disegna anche le osservazioni e add è ignorato
+#se y=TRUE disegna anche le osservazioni e add e'ignorato
         if(y) add<-FALSE
         arg<-list(...)
         if(is.null(arg$col)) arg$col=1

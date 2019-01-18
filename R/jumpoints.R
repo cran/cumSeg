@@ -5,8 +5,8 @@ function(y, x, k=min(30,round(length(y)/10)), output="2",
 #y: the response; x the explanatory (if missing index integers are assumed)
 #psi: the starting values for the breakpoints. If NULL k quantiles are used.
 #k: the number of breakpoints to be estimated. This argument is ignored when psi is specified
-#output: "1" restituisce tutti i breakpoint individuati. fit.control() può essere usato per modificare
-#       it.max. Aumentandolo può ridurre il n. di "putative" (candidate) psi e migliorare la performance
+#output: "1" restituisce tutti i breakpoint individuati. fit.control() puo essere usato per modificare
+#       it.max. Aumentandolo puo ridurre il n. di "putative" (candidate) psi e migliorare la performance
 #       della selezione dei psi attraverso un qualche criterio.
 #output: "2" applica il criterio in selection per selezionare i jumpoints "significativi"
 #output: "3" ri-applica l'algoritmo segmented assumendo come punti di partenza quelli selezionati; in genere
@@ -14,8 +14,9 @@ function(y, x, k=min(30,round(length(y)/10)), output="2",
 #------------
 #--- seg.lm.fit0
 #funzioni interne
+seg.lm.fit0<-NULL
 seg.lm.fit0<- function(y, Z, PSI, control, round=FALSE, ...){
-#Questa è una versione semplificata di seg.lm.fit() per evitare calcoli inutili
+#Questa e una versione semplificata di seg.lm.fit() per evitare calcoli inutili
 #y: la risposta
 #Z: matrice di variabile segmented
 #control: lista che controlla il processo di stima
@@ -35,7 +36,7 @@ seg.lm.fit0<- function(y, Z, PSI, control, round=FALSE, ...){
       psi.values <- NULL
       H <- 1
       psi<-PSI[1,]
-      #NB Poichè Z contiene ripetizioni della stessa variabile è sufficiente prendere Z[,1]
+      #NB Poiche Z contiene ripetizioni della stessa variabile e sufficiente prendere Z[,1]
       #if (intercept)  XREG <- cbind(1,Z[,1],Xlinear) else XREG <- cbind(Z[,1],Xlinear)
       #se AR
 #      n<-length(y)
@@ -110,7 +111,7 @@ seg.lm.fit0<- function(y, Z, PSI, control, round=FALSE, ...){
       psi<-round(psi,0)
       PSI <- matrix(rep(psi, rep(nrow(Z), ncol(Z))), ncol = ncol(Z))
       V <- ifelse((Z > PSI), -1, 0)
-      #V serve per i fitted...si può evitare di crearla?
+      #V serve per i fitted...si puo evitare di crearla?
       }
    #obj$psi <- if(round) round(sort(psi),2) else sort(psi)
    obj$psi <- sort(psi)
@@ -127,9 +128,9 @@ seg.lm.fit0<- function(y, Z, PSI, control, round=FALSE, ...){
 #
 #-- pen.MDL
 pen.MDL<-function(id,n){
-#restituisce un vettore (di dim=length(id)) che rappresenta la penalità 2*sum\log n_j per
+#restituisce un vettore (di dim=length(id)) che rappresenta la penalita 2*sum\log n_j per
 #ogni partizione (active set)
-#length(id) è il num (max) di breakpoints ed n è il vettore delle numerosità della
+#length(id) e il num (max) di breakpoints ed n e' il vettore delle numerosita della
 #partizione.
     do.m<-function(id,n.col){
         blockdiag <- function(...) {
@@ -225,7 +226,7 @@ pen.MDL<-function(id,n){
     Cn<-eval(parse(text=selection$Cn))
     S<-selection$S
     tipoAlg<-selection$alg
-    require(lars)
+    #require(lars)
     if(is.null(obj$psi)) stop("No estimated breakpoint in obj")
     #-------------------
     #pesi2<-1/abs(diff(c(obj$psi,n))*obj$beta.c)
