@@ -89,7 +89,7 @@ Vito Muggeo
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link{lars}}
+\code{\link{lars}}, \code{\link{sel.control}}, \code{\link{fit.control}}.
 }
 \examples{
 
@@ -103,13 +103,17 @@ y<-lp+e #data
 
 #fit the model without selecting the changepoints
 o1<-jumpoints(y,output="1")
-plot(o1,y=TRUE, add=FALSE)
+plot(o1, typeL="l")
 lines(lp, col=2) #true regression function
+legend("topright", c("true","fit with output=1"),bty="n", col=c(2,1), lty=1)
 
 #fit model and select the changepoints
 o2<-jumpoints(y,output="2")
-plot(o2,y=TRUE, add=FALSE)
-lines(lp, col=2) #true regression function
+par(mfrow=c(1,2))
+plot(o2, what="c")
+plot(o2, typeL="s")
+lines(lp, col=3) #true regression function
+legend("topright", c("true","fit with output=2"),bty="n", col=c(3,1), lty=1)
 }
     }
 

@@ -8,23 +8,23 @@ Change point detection and estimation in genomic sequences
 \description{
 Estimation of number and location of change points in `mean-shift'
 	(`piecewise constant' or `step-function') models. 
-  Particularly useful to model genomic sequences of continuous measurements.
+  Particularly useful (but not confined) to model genomic sequences of continuous measurements.
   }
 \details{
 \tabular{ll}{
 Package: \tab cumSeg\cr
 Type: \tab Package\cr
-Version: \tab 1.2\cr
-Date: \tab 2019-01-18\cr
+Version: \tab 1.3\cr
+Date: \tab 2020-07-18\cr
 License: \tab GPL\cr
 LazyLoad: \tab yes\cr
 }
 Package \code{cumSeg} estimates the number and location of change points in `mean-shift'
-	(also said `piecewise constant' or `step-function') models. These models are particularly useful in Biology, Medicine, or Genomics where 
+	(also said `piecewise constant' or `step-function') models. These models are particularly useful in Biology, Medicine, or Genomics, where 
   it is of interest to know the location of changes in some genomic sequences (e.g. in array comparative genomic hybridization analysis).
   The algorithm works by first estimating an high number of change points (via the efficient `segmented' algorithm of Muggeo (2003)) 
   and then by applying the \emph{lars} algorithm of Efron et al. (2004) to select some of them via a generalized BIC criterion. 
-  The procedure appears to be (somewhat) robust to some forms of model mis-specifications and 
+  The procedure appears to be (somewhat) robust to some forms of model mis-specifications and, 
   from a computational standpoint, it is substantially independent of the number of change points to be estimated.
 }
 \author{

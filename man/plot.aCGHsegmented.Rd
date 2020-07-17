@@ -8,7 +8,8 @@ Plot method for the class 'aCGHsegmented'
 Plots fitted piecewise constant lines.
 }
 \usage{
-\method{plot}{aCGHsegmented}(x, add = FALSE, y = TRUE, psi.lines = TRUE, ...)
+\method{plot}{aCGHsegmented}(x, add = FALSE, y = TRUE, psi.lines = TRUE, typeL="l", 
+    what=c("lines","criterion"), ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -24,6 +25,14 @@ logical; if \code{TRUE} the observations are also plotted, otherwise only the fi
 }
   \item{psi.lines}{
 logical; if \code{TRUE} vertical lines corresponding to the estimated changepoints are added.
+}
+  \item{typeL}{
+argument \code{type} for the fitted lines. Possible options are \verb{typeL="s"} to plot the horizontal and vertical lines of the step-function, and 
+\verb{typeL="l"} to draw the horizontal lines only.  
+}
+  \item{what}{
+If \code{'lines'} the fitted lines are plotted, otherwise the criterion values versus the number of change points, provided the fitted object \code{x} has been 
+called with argument \code{output='2'} or \code{output='3'}.  
 }
   \item{\dots}{
 possible additional graphical arguments, such as \code{col}, \code{xlab}, and so on.  

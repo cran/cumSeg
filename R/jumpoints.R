@@ -1,5 +1,4 @@
-jumpoints <-
-function(y, x, k=min(30,round(length(y)/10)), output="2",
+jumpoints <-function(y, x, k=min(30,round(length(y)/10)), output="2",
     psi=NULL, round=TRUE, control = fit.control(), selection=sel.control(), ...)  {
 #jump-point models
 #y: the response; x the explanatory (if missing index integers are assumed)
@@ -180,7 +179,9 @@ pen.MDL<-function(id,n){
      if(missing(x)) {
             x<-1:n
             Y<-cumsum(y)
-          } else {
+            miss.x<-TRUE
+        } else {
+            miss.x<-FALSE
             if(length(x)!=n) stop("Lengths of x and y differ")
             y<-y[order(x)]
             x<-sort(x)
@@ -189,11 +190,13 @@ pen.MDL<-function(id,n){
 #            DD[col(DD)>row(DD)]<-0   # matrice di trasformazione di y in Y
 #            Y <- drop(DD%*%y)
             Y<-cumsum(y*diffx)
-          }
+        }
+     
+     rangeX<-range(x)
      if(is.null(psi)) psi<-quantile(x, prob= seq(0,1,l=k+2)[-c(1,k+2)], names=FALSE)
-      k<-length(psi)
-      Z <- matrix(rep(x, k), nrow = n)
-      PSI <- matrix(rep(psi, rep(n, k)), ncol = k)
+     k<-length(psi)
+     Z <- matrix(rep(x, k), nrow = n)
+     PSI <- matrix(rep(psi, rep(n, k)), ncol = k)
 
     it.max <- old.it.max <- control$it.max
     if (it.max == 0)  U <- pmax((Z - PSI), 0)
@@ -213,6 +216,7 @@ pen.MDL<-function(id,n){
 ##--- primo output
     if(output=="1") {
         class(obj)<-"aCGHsegmented"
+        obj$rangeX<-rangeX
         return(obj)
         }
     #se vuoi selezionare anche i psi significativi...
@@ -282,6 +286,8 @@ pen.MDL<-function(id,n){
     id<-sort(c(0,id.var.entry)[1:min.r])
     if(length(id)<=1) {
         o<-list(y=y,est.means=mean(y),id.var.entry=id.var.entry,n.psi=0,criterion=crit)
+        o$rangeX<-rangeX
+        if(!miss.x) o$x<-x
         class(o)<-"aCGHsegmented"
         return(o)
         }
@@ -302,6 +308,8 @@ pen.MDL<-function(id,n){
                   psi0=psi0,est.means0=est.means0,est.means=cumsum(hat.b),criterion=crit,
                   fitted.values=fittedvalues)
         ris$y<-y
+        ris$rangeX <- rangeX
+        if(!miss.x) ris$x<-x
         class(ris)<-"aCGHsegmented"
         return(ris)
         }
@@ -327,6 +335,8 @@ pen.MDL<-function(id,n){
 
     ris$fitted.values<-fitted.v
     ris$y<-y
+    ris$rangeX<-rangeX
+    if(!miss.x) ris$x<-x
     class(ris)<-"aCGHsegmented"
     return(ris)
     }
